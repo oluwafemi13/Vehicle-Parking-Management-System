@@ -7,4 +7,9 @@
     <RootNamespace>Vehicle_Parking_Management_System</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Vehicle.DataAccess\Vehicle.DataAccess.csproj" />
+    <ProjectReference Include="..\Vehicle.Utility\Vehicle.Utility.csproj" />
+  </ItemGroup>
+
 </Project>
