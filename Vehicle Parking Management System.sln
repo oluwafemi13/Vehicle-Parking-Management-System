@@ -5,11 +5,11 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicle Parking Management System", "Vehicle Parking Management System.csproj", "{C52F3604-3BC0-4404-92A5-3C88F3D89721}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicle.DataAccess", "..\Vehicle.DataAccess\Vehicle.DataAccess.csproj", "{9600243B-64C5-4A66-8632-C6122BDE6D58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "..\Vehicle.DataAccess\DataAccess.csproj", "{9600243B-64C5-4A66-8632-C6122BDE6D58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "..\Vehicle.Models\Models.csproj", "{2A1727B8-B4FB-4807-9D55-2D581E020A40}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicle.Utility", "..\Vehicle.Utility\Vehicle.Utility.csproj", "{B231B50E-CD16-46D7-B062-7A2A38DE596E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "..\Vehicle.Utility\Utility.csproj", "{B231B50E-CD16-46D7-B062-7A2A38DE596E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
