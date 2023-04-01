@@ -1,4 +1,6 @@
 using DataAccess.Data;
+using DataAccess.Persistence.Interface;
+using DataAccess.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -9,6 +11,8 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
