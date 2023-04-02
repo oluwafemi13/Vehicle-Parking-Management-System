@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Vehicle_Parking_Management_System</title>
-    @*<link rel="stylesheet" href="~/css/bootswatch_lux.css" />*@
-    <link rel="stylesheet" href="~/css/bootswatch_flatly.css />
+    <link rel="stylesheet" href="~/css/bootswatch_flatly.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Vehicle_Parking_Management_System.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     @*<!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -41,7 +43,7 @@
                 </div>
             </div>
         </nav>*@
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Navbar</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,10 +77,10 @@
                             </div>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    @*<form class="d-flex">
                         <input class="form-control me-sm-2" type="search" placeholder="Search">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    </form>*@
                 </div>
             </div>
         </nav>
@@ -89,7 +91,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted navbar-dark bg-primary">
+    <footer class="border-top footer text-muted navbar-dark bg-black">
         <div class="container">
             &copy; 2023 - Vehicle_Parking_Management_System - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
