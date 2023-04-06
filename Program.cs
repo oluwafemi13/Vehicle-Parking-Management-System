@@ -16,8 +16,15 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //options => options.SignIn.RequireConfirmedAccount = true
-builder.Services.AddDefaultIdentity<IdentityUser>()
+/*builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<DatabaseContext>();
+*/
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+})
+    .AddEntityFrameworkStores<DatabaseContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
