@@ -4,6 +4,8 @@ using DataAccess.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,7 @@ app.UseRouting();
 app.UseAuthentication();;
 
 app.UseAuthorization();
+
 
 app.MapRazorPages();
 
