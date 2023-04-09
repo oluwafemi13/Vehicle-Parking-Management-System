@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationM
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using System.Configuration;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,16 +20,25 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => {
-    //options.SignIn.RequireConfirmedAccount = true;
+/*builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
+    options.SignIn.RequireConfirmedAccount = true;
     options.User.RequireUniqueEmail = true;
     options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
 })
-    .AddEntityFrameworkStores<DatabaseContext>();
+    .AddEntityFrameworkStores<DatabaseContext>();*/
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+{
+
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+    options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
+
+})
+               .AddRoles<IdentityRole>()
+               .AddEntityFrameworkStores<DatabaseContext>();
 
 
 
-/*builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+/*builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.User.RequireUniqueEmail = true;
 })
