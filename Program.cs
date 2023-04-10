@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using System.Configuration;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Vehicle_Parking_Management_System.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,11 +31,12 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
 
     options.SignIn.RequireConfirmedPhoneNumber = false;
+    options.User.RequireUniqueEmail = true;
     options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
 
 })
-               .AddRoles<IdentityRole>()
-               .AddEntityFrameworkStores<DatabaseContext>();
+      .AddRoles<IdentityRole>()
+      .AddEntityFrameworkStores<DatabaseContext>();
 
 
 
@@ -44,7 +46,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 })
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddDefaultTokenProviders();*/
-
+builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
