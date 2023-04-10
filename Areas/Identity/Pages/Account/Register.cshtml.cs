@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Models;
+using Vehicle_Parking_Management_System.Static;
 
 namespace Vehicle_Parking_Management_System.Areas.Identity.Pages.Account
 {
@@ -26,24 +27,27 @@ namespace Vehicle_Parking_Management_System.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
-       // private readonly IUserStore<ApplicationUser> _userStore;
-        //private readonly IUserEmailStore<ApplicationUser> _emailStore;
+        private readonly IUserStore<ApplicationUser> _userStore;
+        private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
-            //IUserStore<ApplicationUser> userStore,
+            IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
-            //_userStore = userStore;
-           // _emailStore = GetEmailStore();
+            _userStore = userStore;
+            _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -76,9 +80,30 @@ namespace Vehicle_Parking_Management_System.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
+            [Display(Name = "Phone Number")]
+            public string PhoneNumber { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -113,15 +138,35 @@ namespace Vehicle_Parking_Management_System.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-               /* var user = CreateUser();
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);*/
+                // var user = CreateUser();
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                user.FirstNmae = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.PhoneNumber = Input.PhoneNumber;
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                if (! await _roleManager.RoleExistsAsync(UserRoles.Admin))
+                {
+                    _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin)).GetAwaiter().GetResult();
+                }
+                if (!await _roleManager.RoleExistsAsync(UserRoles.Customer))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(UserRoles.Customer));
+                }
 
                 if (result.Succeeded)
                 {
+                    var selected = Request.Form["ChooseRole"].ToString();
+                    if (!string.IsNullOrEmpty(selected) && selected == UserRoles.Admin)
+                    {
+                        await _userManager.AddToRoleAsync(user, selected);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, selected);
+                    }
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
@@ -170,13 +215,13 @@ namespace Vehicle_Parking_Management_System.Areas.Identity.Pages.Account
             }
         }
 
-       /* private IUserEmailStore<ApplicationUser> GetEmailStore()
+        private IUserEmailStore<ApplicationUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
-        }*/
+        }
     }
 }
