@@ -145,6 +145,7 @@ namespace Vehicle_Parking_Management_System.Areas.Identity.Pages.Account
                 user.FirstNmae = Input.FirstName;
                 user.LastName = Input.LastName;
                 user.PhoneNumber = Input.PhoneNumber;
+                
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (! await _roleManager.RoleExistsAsync(UserRoles.Admin))
