@@ -24,6 +24,10 @@
 
   <ItemGroup>
     <Folder Include="Pages\Customer\" />
+    <Folder Include="wwwroot\dist\css\" />
+    <Folder Include="wwwroot\dist\js\" />
+    <Folder Include="wwwroot\dist\img\" />
+    <Folder Include="wwwroot\plugins\" />
   </ItemGroup>
 
 </Project>

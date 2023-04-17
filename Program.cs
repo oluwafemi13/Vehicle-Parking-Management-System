@@ -52,7 +52,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 })
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddDefaultTokenProviders();*/
-builder.Services.AddSingleton<IEmailSender, EmailSender>();
+//builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSingleton<ApplicationUser>();
 
