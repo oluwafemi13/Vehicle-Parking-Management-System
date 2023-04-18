@@ -50,22 +50,107 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><img src="../dist/img/avatar.png" class="img-square elevation-3" style="width:50px;  border-radius:10%;" alt="User Image">   </td>
+           
+                @foreach(var item in Model.users)
+                {
+                 <tr>
+                 <td hidden> @item.Id</td>
+                 <td><img src="../dist/img/avatar.png" class="img-square elevation-3" style="width:50px;  border-radius:10%;" alt="User Image">   </td>
+                <td>@item.FirstNmae   @item.LastName</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td><i style="color: blue"><u>data</u></i></td>
                 <td>Data</td>
                 <td>Data</td>
-                <td>Data</td>
-                <td><i style="color: blue"><u>Data</u></i></td>
-                <td>Data</td>
-                <td>Data</td>
-
                 <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+                </tr>
+               }
 
-            </tr>
           
         </tbody>
        
     </table>
+                            <div class="modal fade" id="edit">
+                                <div class="modal-dialog modal-md">
+                                    <form method="post" formaction="" action="">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Update User</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="card card-primary">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Complete Name</label>
+                                                                <input type="text" class="form-control" id="" placeholder="-          First Name           -        Middle Name          -       Last Name         -">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Contact</label>
+                                                                <input type="text" class="form-control" id="" placeholder="Enter Contact ..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Email</label>
+                                                                <input type="text" class="form-control" id="" placeholder="Enter Email ..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Username</label>
+                                                                <input type="text" class="form-control" id="" placeholder="Enter Username ..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Password</label>
+                                                                <input type="password" class="form-control" id="" placeholder="Enter Password ..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Category</label>
+                                                                <input type="password" class="form-control" id="" placeholder="Enter User Category ..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>Select Status</label>
+                                                                <select class="form-control">
+                                                                    <option>Active</option>
+                                                                    <option>Inactive</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="custom-file">
+                                                                    <input type="file" class="custom-file-input" id="customFile">
+                                                                    <label class="custom-file-label" for="customFile">Avatar</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                                                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                        
     </div>
     </div>
     </div>
