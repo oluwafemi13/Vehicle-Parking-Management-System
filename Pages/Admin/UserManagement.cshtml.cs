@@ -26,6 +26,7 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
         }
 
         public IEnumerable<ApplicationUser> users { get; set; }
+        public ApplicationUser user { get; set; }
         
 
 
@@ -35,10 +36,15 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
             var claim = ClaimIdentity.FindFirst(ClaimTypes.NameIdentifier);*/
 
             users = _userManager.Users.ToList();
-
+            if(id != null)
+            {
+                user = users.Where(u => u.Id == id).FirstOrDefault();
+            }
+                
 
 
         }
+
 
         public async Task<IActionResult> OnPost()
         {

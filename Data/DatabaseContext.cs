@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vehicle_Parking_Management_System.Models;
 
 namespace DataAccess.Data
 {
@@ -44,6 +45,7 @@ namespace DataAccess.Data
         public DbSet<VehicleCategory> VehicleCategories { get; set; }
         public DbSet<VehicleOwner> VehicleOwners { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<UManagement> UserManagement { get; set; }
        
 
 

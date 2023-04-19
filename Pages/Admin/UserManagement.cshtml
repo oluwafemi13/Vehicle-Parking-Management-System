@@ -62,7 +62,7 @@
                 <td><i style="color: blue"><u>data</u></i></td>
                 <td>Data</td>
                 <td>Data</td>
-                <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+                 <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs" asp-route-id="@item.Id"><i class="fa fa-trash"></i></button></td>
                 </tr>
                }
 
@@ -72,7 +72,8 @@
     </table>
                             <div class="modal fade" id="edit">
                                 <div class="modal-dialog modal-md">
-                                    <form method="post" formaction="" action="">
+                                    <form method="post" formaction="">
+                                        
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Update User</h4>
@@ -80,32 +81,33 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
+                                            <input asp-for="user.Id" hidden/>
                                             <div class="card card-primary">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <label for="exampleInputEmail1">Complete Name</label>
-                                                                <input type="text" class="form-control" id="" placeholder="-          First Name           -        Middle Name          -       Last Name         -">
+                                                                <label asp-for="user.FirstNmae">Complete Name</label>
+                                                                <input asp-for="user.FirstNmae" type="text" class="form-control" id=""         >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Contact</label>
-                                                                <input type="text" class="form-control" id="" placeholder="Enter Contact ..">
+                                                                <input type="text" class="form-control" id="" asp-for="user.PhoneNumber">
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Email</label>
-                                                                <input type="text" class="form-control" id="" placeholder="Enter Email ..">
+                                                                <input type="text" class="form-control" id="" asp-for="user.Email">
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Username</label>
-                                                                <input type="text" class="form-control" id="" placeholder="Enter Username ..">
+                                                                <input type="text" class="form-control" id="" asp-for="user.Email">
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
@@ -142,7 +144,7 @@
                                             </div>
                                             <div class="modal-footer justify-content-between">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                                                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+                                                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Update</button>
                                             </div>
                                         </div>
                                     </form>
