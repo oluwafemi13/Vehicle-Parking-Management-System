@@ -32,7 +32,7 @@
                             <button class="btn btn-success btn-xs" style="margin-left: 77%" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Add</button>
                             <div class="modal fade" id="add">
                                 <div class="modal-dialog modal-sm">
-                                    <form action="" method="post">
+                                    <form asp-page-handler="Add" asp-page="ParkingSlot" method="post">
                                         
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -47,13 +47,13 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Parking Slot</label>
-                                                                <input type="text" class="form-control" id="" placeholder="Enter Parking Slot Number ..">
+                                                                <input asp-for="slot.SlotNumber" type="text" class="form-control" id="" placeholder="Enter Parking Slot Number ..">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Status</label>
-                                                                <input type="text" class="form-control" id="" placeholder="Enter Slot Status ..">
+                                                                <input asp-for="slot.Status" type="text" class="form-control" id="" placeholder="Enter Slot Status ..">
                                                             </div>
                                                         </div>
 
@@ -82,7 +82,7 @@
                                         <th width="7%"></th>
                                     </tr>
                                 </thead>
-                                @foreach(var item in Model.slot)
+                                @foreach(var item in Model.slots)
                                 {
                                         <tbody>
                                         <tr>
@@ -106,7 +106,8 @@
                             </table>
                             <div class="modal fade" id="edit">
                                 <div class="modal-dialog modal-sm">
-                                    <form action="">
+                                    <form asp-page-handler="Edit" asp-page="ParkingSlot" method="post">
+                                        <input asp-for="slot.Id" hidden value="slot.Id" />
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Update Slot</h4>

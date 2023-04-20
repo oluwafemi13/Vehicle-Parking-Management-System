@@ -13,17 +13,39 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _SignInManager;
 
-        public ParkingSlotModel(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public ParkingSlotModel(IUnitOfWork unitOfWork, 
+                                UserManager<ApplicationUser> userManager,  
+                                SignInManager<ApplicationUser> signInManager)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _SignInManager = signInManager;
         }
 
-        public IEnumerable<ParkingSlot> slot { get; set; }
+        public ParkingSlot slot { get; set; }
+
+        public IEnumerable<ParkingSlot> slots { get; set; }
         public void OnGet()
         {
-            slot = _unitOfWork.Parking.GetAll();
+            slots = _unitOfWork.Parking.GetAll();
+        }
+
+        public async Task<IActionResult> OnPostEdit()
+        {
+            if(ModelState.IsValid)
+            {
+                
+            }
+            return RedirectToPage("ParkingSlot");
+        }
+
+        public async Task<IActionResult> OnPostAdd()
+        {
+            if(ModelState.IsValid)
+            {
+
+            }
+            return RedirectToPage("Dashboard");
         }
     }
 }
