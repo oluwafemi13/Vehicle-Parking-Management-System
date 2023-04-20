@@ -116,37 +116,37 @@
                                                                 <input type="text" class="form-control" id="" asp-for="user.Email">
                                                             </div>
                                                         </div>
-                                                        <div class="col-6">
+                                                       @* <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Username</label>
                                                                 <input type="text" class="form-control" id="" asp-for="user.Email">
                                                             </div>
-                                                        </div>
+                                                        </div>*@
                                                         @*<div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Password</label>
                                                                 <input type="password" class="form-control" id="" placeholder="Enter Password ..">
                                                             </div>
                                                         </div>*@
-                                                        <div class="col-6">
+                                                       @* <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Category</label>
                                                                 <input asp-for="UManagement.UserCategory" class="form-control" id="" placeholder="Enter User Category ..">
                                                             </div>
-                                                        </div>
+                                                        </div>*@
                                                         <div class="col-6">
                                                             <div class="form-group">
                                                                 <label>Select Status</label>
                                                                 <select class="form-control">
                                                                     <option value="Active" name="Status">Active</option>
-                                                                    <option value="Active" name="Status">Inactive</option>
+                                                                    <option value="InActive" name="Status">Inactive</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <div class="custom-file">
-                                                                    <input type="file" class="custom-file-input" id="customFile">
+                                                                    <input type="file" class="custom-file-input" id="customFile" asp-for="user.Avatar" name="Avatar">
                                                                     <label class="custom-file-label" for="customFile">Avatar</label>
                                                                 </div>
                                                             </div>

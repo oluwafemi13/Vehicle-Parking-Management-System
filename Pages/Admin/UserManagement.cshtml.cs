@@ -50,29 +50,23 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
 
         public async Task<IActionResult> OnPost()
         {
-            if(ModelState.IsValid)
-            {
+            
                 var selected = Request.Form["Status"].ToString();
 
                 var UpdateUser = new ApplicationUser();
                 UpdateUser.Id = user.Id;
-                UpdateUser.UserName = user.UserName;
+                //UpdateUser.UserName = user.UserName;
                 UpdateUser.Email = user.Email;
                 UpdateUser.PhoneNumber = user.PhoneNumber;
                 UpdateUser.FirstNmae= user.FirstNmae;
                 UpdateUser.LastName= user.LastName;
                 UpdateUser.Avatar = user.Avatar;
 
-                var UManage = new UManagement();
-                UManage.Status = selected;
-                UManage.UserCategory = UManagement.UserCategory;
+                
 
                 _unitOfWork.Commit();
                 _unitOfWork.Dispose();
 
-                return Page();
-
-            }
             return Page();
         }
     }
