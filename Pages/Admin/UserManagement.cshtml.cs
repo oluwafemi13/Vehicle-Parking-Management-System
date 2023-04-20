@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using System.Security.Claims;
+using Vehicle_Parking_Management_System.Models;
 
 namespace Vehicle_Parking_Management_System.Pages.Admin
 {
@@ -27,6 +28,7 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
 
         public IEnumerable<ApplicationUser> users { get; set; }
         public ApplicationUser user { get; set; }
+        public UManagement UManagement { get; set; }
         
 
 
@@ -48,7 +50,30 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
 
         public async Task<IActionResult> OnPost()
         {
-            return RedirectToPage();
+            if(ModelState.IsValid)
+            {
+                var selected = Request.Form["Status"].ToString();
+
+                var UpdateUser = new ApplicationUser();
+                UpdateUser.Id = user.Id;
+                UpdateUser.UserName = user.UserName;
+                UpdateUser.Email = user.Email;
+                UpdateUser.PhoneNumber = user.PhoneNumber;
+                UpdateUser.FirstNmae= user.FirstNmae;
+                UpdateUser.LastName= user.LastName;
+                UpdateUser.Avatar = user.Avatar;
+
+                var UManage = new UManagement();
+                UManage.Status = selected;
+                UManage.UserCategory = UManagement.UserCategory;
+
+                _unitOfWork.Commit();
+                _unitOfWork.Dispose();
+
+                return Page();
+
+            }
+            return Page();
         }
     }
 }

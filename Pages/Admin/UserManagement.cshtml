@@ -72,7 +72,7 @@
     </table>
                             <div class="modal fade" id="edit">
                                 <div class="modal-dialog modal-md">
-                                    <form method="post" formaction="">
+                                    <form method="post">
                                         
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -85,16 +85,28 @@
                                             <div class="card card-primary">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-12">
+                                                        @*<div class="col-12">
                                                             <div class="form-group">
                                                                 <label asp-for="user.FirstNmae">Complete Name</label>
                                                                 <input asp-for="user.FirstNmae" type="text" class="form-control" id=""         >
+                                                            </div>
+                                                        </div>*@
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label asp-for="user.FirstNmae">First Name</label>
+                                                                <input type="text" class="form-control" id="" asp-for="user.FirstNmae">
+                                                            </div>
+                                                        </div>
+                                                         <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label asp-for="user.LastName">Last Name</label>
+                                                                <input type="text" class="form-control" id="" asp-for="user.LastName">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-6">
                                                             <div class="form-group">
-                                                                <label for="exampleInputEmail1">Contact</label>
+                                                                <label for="exampleInputEmail1">Phone</label>
                                                                 <input type="text" class="form-control" id="" asp-for="user.PhoneNumber">
                                                             </div>
                                                         </div>
@@ -110,24 +122,24 @@
                                                                 <input type="text" class="form-control" id="" asp-for="user.Email">
                                                             </div>
                                                         </div>
-                                                        <div class="col-6">
+                                                        @*<div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Password</label>
                                                                 <input type="password" class="form-control" id="" placeholder="Enter Password ..">
                                                             </div>
-                                                        </div>
+                                                        </div>*@
                                                         <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Category</label>
-                                                                <input type="password" class="form-control" id="" placeholder="Enter User Category ..">
+                                                                <input asp-for="UManagement.UserCategory" class="form-control" id="" placeholder="Enter User Category ..">
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="form-group">
                                                                 <label>Select Status</label>
                                                                 <select class="form-control">
-                                                                    <option>Active</option>
-                                                                    <option>Inactive</option>
+                                                                    <option value="Active" name="Status">Active</option>
+                                                                    <option value="Active" name="Status">Inactive</option>
                                                                 </select>
                                                             </div>
                                                         </div>
