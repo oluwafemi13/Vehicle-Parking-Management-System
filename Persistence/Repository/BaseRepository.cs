@@ -76,5 +76,10 @@ namespace DataAccess.Persistence.Repository
         {
             _db.Entry(item).State = EntityState.Modified;
         }
+
+        public IEnumerable<T> GetAll()
+        {
+            return _db.Set<T>().ToList();
+        }
     }
 }

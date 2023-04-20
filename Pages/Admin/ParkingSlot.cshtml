@@ -33,6 +33,7 @@
                             <div class="modal fade" id="add">
                                 <div class="modal-dialog modal-sm">
                                     <form action="" method="post">
+                                        
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Add Slot</h4>
@@ -81,27 +82,27 @@
                                         <th width="7%"></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><b style="color: maroon">7545</b></td>
-                                        <td><button type="button" class="btn btn-info btn-xs">Status Name</button></td>
-                                        <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+                                @foreach(var item in Model.slot)
+                                {
+                                        <tbody>
+                                        <tr>
+                                            <td><b style="color: maroon">7545</b></td>
+                                            @if(item.Status == "Unavailable".ToLower())
+                                            {
+                                             <td><button type="button" class="btn btn-danger btn-xs" >@item.Status</button></td>
+                                            }else
+                                            {
+                                            <td><button type="button" class="btn btn-info btn-xs">@item.Status</button></td>
+                                            }
+                                            
+                                            <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
 
-                                    </tr>
-                                    <tr>
-                                        <td><b style="color: maroon">7545</b></td>
-                                        <td><button type="button" class="btn btn-danger btn-xs">Status Name</button></td>
-                                        <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
-                                    </tr>
-
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Parking Slot No.</th>
-                                        <th>Slot Status</th>
-                                        <th width="7%"></th>
-                                    </tr>
-                                </tfoot>
+                                        </tr>
+                                        
+                                        </tbody>
+                                }
+                                
+                                
                             </table>
                             <div class="modal fade" id="edit">
                                 <div class="modal-dialog modal-sm">

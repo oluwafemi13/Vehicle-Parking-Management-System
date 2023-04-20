@@ -9,10 +9,11 @@ namespace DataAccess.Persistence.Interface
 {
     public interface IBaseRepository<T> where T : class
     {
+        
         Task<T> GetById(int id);
         Task<T> Get(Expression<Func<T, bool>> predicate=null);
         Task<IEnumerable<T>> GetAllAsync();
-        //Task<IReadOnlyList<T>> GetAll();
+        IEnumerable<T> GetAll();
         void AddAsync(T item);
         void Delete(int id);
         void DeleteRange(int start, int end, int count);
