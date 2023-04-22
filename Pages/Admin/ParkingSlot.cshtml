@@ -62,11 +62,24 @@
                                                                 <input asp-for="slot.SlotNumber" type="text" class="form-control" id="" placeholder="Enter Parking Slot Number ..">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
+                                                        @*<div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Status</label>
                                                                 <input asp-for="slot.Status" type="text" class="form-control" id="" placeholder="Enter Slot Status ..">
                                                             </div>
+                                                        </div>*@
+                                                        @*<div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>Select Status</label>
+                                                                <select class="form-control">
+                                                                    <option value="Available" name="Status">Available</option>
+                                                                    <option value="Unavailable" name="Status">Unavailable</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>*@
+                                                        <div class="col-12">
+                                                            <input name="Status" type="radio" value="Available" />Available
+                                                            <input name="Status" type="radio" value="Unavailable" />Unavailable
                                                         </div>
 
                                                     </div>
@@ -91,7 +104,7 @@
                                     <tr>
                                         <th>Parking Slot No.</th>
                                         <th>Slot Status</th>
-                                        <th width="7%"></th>
+                                        <th width="10%"></th>
                                     </tr>
                                 </thead>
                                 @foreach(var item in Model.slots)
@@ -99,7 +112,7 @@
                                         <tbody>
                                         <tr>
                                             <td><b style="color: maroon">7545</b></td>
-                                            @if(item.Status == "Unavailable".ToLower())
+                                            @if(item.Status == "Unavailable")
                                             {
                                              <td><button type="button" class="btn btn-danger btn-xs" >@item.Status</button></td>
                                             }else
@@ -107,7 +120,7 @@
                                             <td><button type="button" class="btn btn-info btn-xs">@item.Status</button></td>
                                             }
                                             
-                                            <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+                                            <td><button class="btn btn-primary btn-xs" asp-page-handler="Del" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs" asp-page-handler="Delete" value="@item.Id"><i class="fa fa-trash"></i></button></td>
 
                                         </tr>
                                         

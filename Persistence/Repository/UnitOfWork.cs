@@ -32,7 +32,7 @@ namespace DataAccess.Persistence.Repository
 
         public void Commit()
         {
-            _db.SaveChangesAsync();
+            _db.SaveChanges();
         }
 
         public void Dispose()

@@ -22,6 +22,7 @@ namespace DataAccess.Persistence.Repository
         public void AddAsync(T item)
         {
              _db.Entry(item).State = EntityState.Added;
+            //_db.SaveChanges();
             
         }
 
