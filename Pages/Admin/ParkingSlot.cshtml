@@ -30,10 +30,11 @@
                         <div class="card-header">
                             <h3 class="card-title">Parking Slot Data table</h3>
                             <button class="btn btn-success btn-xs" style="margin-left: 77%" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Add</button>
+                            @*ADD MODAL*@
                             <div class="modal fade" id="add">
                                 <div class="modal-dialog modal-sm">
                                     <form asp-page-handler="Add" asp-page="ParkingSlot" method="post">
-                                        
+                                        @*<input  type="hidden" id="id" name="id" value="@Model.slot.Id"/>*@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Add Slot</h4>
@@ -98,7 +99,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-
+                            @*DATA TABLE*@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -120,7 +121,7 @@
                                             <td><button type="button" class="btn btn-info btn-xs">@item.Status</button></td>
                                             }
                                             
-                                            <td><button class="btn btn-primary btn-xs" asp-page-handler="Del" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs" asp-page-handler="Delete" value="@item.Id"><i class="fa fa-trash"></i></button></td>
+                                            <td><button class="btn btn-primary btn-xs" asp-route-itemid="@item.Id" asp-page-handler="Edit" value="@item.Id" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs delete" asp-page-handler="Delete" value="@item.Id"><i class="fa fa-trash"></i></button></td>
 
                                         </tr>
                                         
@@ -131,8 +132,9 @@
                             </table>
                             <div class="modal fade" id="edit">
                                 <div class="modal-dialog modal-sm">
+                                    @*EDIT MODAL*@
                                     <form asp-page-handler="Edit" asp-page="ParkingSlot" method="post">
-                                        <input asp-for="slot.Id" hidden value="slot.Id" />
+                                        <input asp-for="Slot.Id" hidden value="Slot.Id" />
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Update Slot</h4>
@@ -183,3 +185,12 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script type="text/javascript">
+    (document).ready(function () {
+        $('table .delete').on('click', function () {
+            var id = $(this).parent().find('#id').val();
+            alert(id);
+        });
+    });
+</script>

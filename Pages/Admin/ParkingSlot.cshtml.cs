@@ -28,22 +28,24 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
 
         public class InputModel
         {
+            
             public int Id { get; set; }
             
-            public string SlotName { get; set; }
+            public string? SlotName { get; set; }
            
            
-            public string SlotType { get; set; }
+            public string? SlotType { get; set; }
             
             public int SlotNumber { get; set; }
 
             
-            public string Status { get; set; }
-        }
-        
+            public string? Status { get; set; }
 
+           
+        }
 
         public InputModel slot { get; set; }
+        public ParkingSlot Slot { get; set; }
 
         public IEnumerable<ParkingSlot> slots { get; set; }
         public void OnGet(int id)
@@ -53,15 +55,18 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
             slots = _unitOfWork.Parking.GetAll();
         }
 
-        public async Task<IActionResult> OnPostEdit()
+        public async Task<IActionResult> OnPostEdit(int id)
         {
-            if(ModelState.IsValid)
-            {
-                
-            }
+
+           
             return RedirectToPage("ParkingSlot");
         }
 
+        public async Task OnGetEdit(int id)
+        {
+
+            Slot = await _unitOfWork.Parking.Get(x => x.Id == id);
+        }
         public IActionResult OnPostAdd()
         {
             
@@ -77,6 +82,8 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
                 _unitOfWork.Commit();
                 return RedirectToPage("ParkingSlot");
         }
+
+       
 
         public IActionResult OnPostDelete(int id)
         {
