@@ -54,6 +54,11 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
             
             slots = _unitOfWork.Parking.GetAll();
         }
+        public async Task OnGetEdit(int id)
+        {
+
+            Slot = await _unitOfWork.Parking.Get(x => x.Id == id);
+        }
 
         public async Task<IActionResult> OnPostEdit(int id)
         {
@@ -62,11 +67,7 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
             return RedirectToPage("ParkingSlot");
         }
 
-        public async Task OnGetEdit(int id)
-        {
-
-            Slot = await _unitOfWork.Parking.Get(x => x.Id == id);
-        }
+       
         public IActionResult OnPostAdd()
         {
             
