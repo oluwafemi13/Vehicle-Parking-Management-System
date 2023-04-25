@@ -1,5 +1,5 @@
 ﻿@page
-@model Vehicle_Parking_Management_System.Pages.Admin.BookingModel
+@model Vehicle_Parking_Management_System.Pages.Admin.PaymentModel
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Booking</h1>
+                    <h1>Payment</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Booking</li>
+                        <li class="breadcrumb-item active">Payment</li>
                     </ol>
                 </div>
             </div>
@@ -28,14 +28,14 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Booking Data table</h3>
+                            <h3 class="card-title">Payment Data table</h3>
                             <button class="btn btn-success btn-xs" style="margin-left: 80%" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Add</button>
                             <div class="modal fade" id="add">
                                 <div class="modal-dialog modal-md">
                                     <form action="">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Add Booking</h4>
+                                                <h4 class="modal-title">Add Payment</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -43,53 +43,23 @@
                                             <div class="card card-primary">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Reference</label>
                                                                 <input type="text" class="form-control" id="" placeholder="Enter Reference Number ..">
                                                             </div>
                                                         </div>
-                                                        <div class="col-4">
+
+                                                        <div class="col-3">
                                                             <div class="form-group">
-                                                                <label for="exampleInputEmail1">Slot</label>
-                                                                <select class="form-control">
-                                                                    <option>22</option>
-                                                                    <option>23</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Customer Name</label>
-                                                                <select class="form-control">
-                                                                    <option>Data</option>
-                                                                    <option>Data</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Vehicle</label>
-                                                                <select class="form-control">
-                                                                    <option>Data</option>
-                                                                    <option>Data</option>
-                                                                </select>
+                                                                <label for="exampleInputEmail1">Amount Due</label>
+                                                                <input type="text" class="form-control" id="" placeholder="00.00">
                                                             </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <div class="form-group">
-                                                                <label for="exampleInputEmail1">Duration</label>
-                                                                <input type="time" class="form-control" id="" placeholder="0:00">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-9">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Booking Status</label>
-                                                                <select class="form-control">
-                                                                    <option>Pending</option>
-                                                                    <option>Cancel</option>
-                                                                    <option>Approved</option>
-                                                                </select>
+                                                                <label for="exampleInputEmail1">Amount Paid</label>
+                                                                <input type="text" class="form-control" id="" placeholder="00.00">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -98,6 +68,25 @@
                                                                 <textarea row="3" placeholder="Enter.." class="form-control" id=""></textarea>
                                                             </div>
                                                         </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Payment Date</label>
+                                                                <input type="date" class="form-control" id="" placeholder="00.00">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Paid by</label>
+                                                                <input type="text" class="form-control" id="" placeholder="Enter Paid by ..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Customer</label>
+                                                                <input type="text" class="form-control" id="" placeholder="Enter Customer name ..">
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,22 +108,22 @@
                                 <thead>
                                     <tr>
                                         <th>Reference No.</th>
-                                        <th>Customer</th>
-                                        <th>Vehicle</th>
-                                        <th>Duration of Booking</th>
-                                        <th>Slot Number</th>
-                                        <th>Status</th>
+                                        <th>Amount Due</th>
+                                        <th>Amount Paid</th>
                                         <th>Remarks</th>
+                                        <th>Payment Date</th>
+                                        <th>Paid by</th>
+                                        <th>Customer</th>
                                         <th width="7%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td><b style="color: maroon">7545</b></td>
-                                        <td>Data</td>
-                                        <td>RUV</td>
-                                        <td><i>1:00 hrs</i></td>
-                                        <td><button type="button" class="btn btn-info btn-xs">3</button></td>
+                                        <td>300</td>
+                                        <td><b style="color: blue">300,000.99</b></td>
+                                        <td><button type="button" class="btn btn-danger btn-xs">Danger</button></td>
+                                        <td><i>July 12, 2021</i></td>
                                         <td>Data</td>
                                         <td>Data</td>
                                         <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
@@ -142,10 +131,10 @@
                                     </tr>
                                     <tr>
                                         <td><b style="color: maroon">7545</b></td>
-                                        <td>Data</td>
-                                        <td>RUV</td>
-                                        <td><i>1:00 hrs</i></td>
-                                        <td><button type="button" class="btn btn-info btn-xs">3</button></td>
+                                        <td>300</td>
+                                        <td><b style="color: blue">300,000.99</b></td>
+                                        <td><button type="button" class="btn btn-danger btn-xs">Danger</button></td>
+                                        <td><i>July 12, 2021</i></td>
                                         <td>Data</td>
                                         <td>Data</td>
                                         <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
@@ -155,12 +144,12 @@
                                 <tfoot>
                                     <tr>
                                         <th>Reference No.</th>
-                                        <th>Customer</th>
-                                        <th>Vehicle</th>
-                                        <th>Duration of Booking</th>
-                                        <th>Slot Number</th>
-                                        <th>Status</th>
+                                        <th>Amount Due</th>
+                                        <th>Amount Paid</th>
                                         <th>Remarks</th>
+                                        <th>Payment Date</th>
+                                        <th>Paid by</th>
+                                        <th>Customer</th>
                                         <th width="7%"></th>
                                     </tr>
                                 </tfoot>
@@ -170,7 +159,7 @@
                                     <form action="">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Update Booking</h4>
+                                                <h4 class="modal-title">Update Payment</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -178,49 +167,23 @@
                                             <div class="card card-primary">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-8">
+                                                        <div class="col-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Reference</label>
                                                                 <input type="text" class="form-control" id="" placeholder="Enter Reference Number ..">
                                                             </div>
                                                         </div>
-                                                        <div class="col-4">
+
+                                                        <div class="col-3">
                                                             <div class="form-group">
-                                                                <label for="exampleInputEmail1">Slot</label>
-                                                                <select class="form-control">
-                                                                    <option>22</option>
-                                                                    <option>23</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Customer Name</label>
-                                                                <select class="form-control">
-                                                                    <option>Data</option>
-                                                                    <option>Data</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Vehicle</label>
-                                                                <select class="form-control">
-                                                                    <option>Data</option>
-                                                                    <option>Data</option>
-                                                                </select>
+                                                                <label for="exampleInputEmail1">Amount Due</label>
+                                                                <input type="text" class="form-control" id="" placeholder="00.00">
                                                             </div>
                                                         </div>
                                                         <div class="col-3">
                                                             <div class="form-group">
-                                                                <label for="exampleInputEmail1">Duration</label>
-                                                                <input type="time" class="form-control" id="" placeholder="0:00">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-9">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Status</label>
-                                                                <input type="text" class="form-control" id="" placeholder="Enter Booking Status ..">
+                                                                <label for="exampleInputEmail1">Amount Paid</label>
+                                                                <input type="text" class="form-control" id="" placeholder="00.00">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -229,6 +192,25 @@
                                                                 <textarea row="3" placeholder="Enter.." class="form-control" id=""></textarea>
                                                             </div>
                                                         </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Payment Date</label>
+                                                                <input type="date" class="form-control" id="" placeholder="00.00">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Paid by</label>
+                                                                <input type="text" class="form-control" id="" placeholder="Enter Paid by ..">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Customer</label>
+                                                                <input type="text" class="form-control" id="" placeholder="Enter Customer name ..">
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
