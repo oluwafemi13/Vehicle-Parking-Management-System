@@ -29,7 +29,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 builder.Services.AddMvc().AddRazorPagesOptions(options =>
 {
-    options.Conventions.AddPageRoute("Index", "");
+    options.Conventions.AddPageRoute("/LandingPage/Index", "");
 });
 /*builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
     options.SignIn.RequireConfirmedAccount = true;
