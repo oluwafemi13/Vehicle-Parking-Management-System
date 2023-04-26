@@ -27,12 +27,10 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = "/Identity/Account/Logout";
     
 });
-/*builder.Services.AddRazorPages()
-    .AddRazorPagesOptions(options => {
-        options.RootDirectory = "/Index";
-    });*//*
-builder.Services.AddRazorPages().WithRazorPagesRoot("/Index");
-*/
+builder.Services.AddMvc().AddRazorPagesOptions(options =>
+{
+    options.Conventions.AddPageRoute("Index", "");
+});
 /*builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
     options.SignIn.RequireConfirmedAccount = true;
     options.User.RequireUniqueEmail = true;
