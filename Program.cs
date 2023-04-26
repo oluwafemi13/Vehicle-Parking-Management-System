@@ -30,9 +30,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 /*builder.Services.AddRazorPages()
     .AddRazorPagesOptions(options => {
         options.RootDirectory = "/Index";
-    });*/
+    });*//*
 builder.Services.AddRazorPages().WithRazorPagesRoot("/Index");
-
+*/
 /*builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
     options.SignIn.RequireConfirmedAccount = true;
     options.User.RequireUniqueEmail = true;
