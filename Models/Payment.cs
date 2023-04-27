@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
-{
+namespace Models;
+
     public class Payment
     {
         public int PaymentId { get; set; }
@@ -20,4 +20,4 @@ namespace Models
         public Booking Booking { get; set; }
 
     }
-}
+
