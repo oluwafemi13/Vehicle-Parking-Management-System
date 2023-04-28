@@ -57,6 +57,7 @@
 </head>
 @if(SigninManager.IsSignedIn(User))
 {
+    
     @if (User.IsInRole("Admin"))
     {
         <body class="hold-transition sidebar-mini">
@@ -265,6 +266,7 @@
                     bsCustomFileInput.init();
                 });
             </script>
+            
         </body>
     }
     else
@@ -361,6 +363,8 @@
   </aside>
  
                 @RenderBody()
+
+                
                 <footer class="main-footer">
                     <strong>Footer <a href="">Loan Management with SMS System</a>.</strong>
                     All rights reserved.
@@ -455,10 +459,11 @@
                     bsCustomFileInput.init();
                 });
             </script>
+                
             </body>
 
     }
-
+    @*@await RenderSectionAsync("Scripts", required: false)*@
 
 }else
 {
