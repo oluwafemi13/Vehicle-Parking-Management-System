@@ -60,6 +60,15 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSingleton<ApplicationUser>();
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(
+    options =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+        options.IdleTimeout = TimeSpan.FromSeconds(1000);
+    }
+    );
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -77,7 +86,7 @@ app.UseRouting();
 app.UseAuthentication();;
 
 app.UseAuthorization();
-
+app.UseSession();
 app.MapRazorPages();
-
+app.MapControllers();
 app.Run();
