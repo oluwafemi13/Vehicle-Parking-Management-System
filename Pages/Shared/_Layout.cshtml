@@ -60,6 +60,7 @@
     
     @if (User.IsInRole("Admin"))
     {
+        @await RenderSectionAsync("Scripts", required: false)
         <body class="hold-transition sidebar-mini">
             <div class="wrapper">
                 <!-- Navbar -->
@@ -271,6 +272,7 @@
     }
     else
     {
+        @await RenderSectionAsync("Scripts", required: false)
         <body class="hold-transition sidebar-mini layout-fixed">
             <div class="wrapper">
 
@@ -463,7 +465,7 @@
             </body>
 
     }
-    @*@await RenderSectionAsync("Scripts", required: false)*@
+    
 
 }else
 {
