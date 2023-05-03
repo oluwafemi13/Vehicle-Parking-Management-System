@@ -48,19 +48,19 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Slot Name</label>
-                                                                <input asp-for="slot.SlotName" type="text" class="form-control" id="" placeholder="Enter Parking Slot Name ..">
+                                                                <input asp-for="slot.SlotName" type="text" class="form-control" id="" placeholder="Enter Parking Slot Name .." name="SlotName">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Slot Type</label>
-                                                                <input asp-for="slot.SlotType" type="text" class="form-control" id="" placeholder="Enter Parking Slot Type ..">
+                                                                <input asp-for="slot.SlotType" type="text" class="form-control" id="" placeholder="Enter Parking Slot Type .." name="SlotType">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Slot Number</label>
-                                                                <input asp-for="slot.SlotNumber" type="text" class="form-control" id="" placeholder="Enter Parking Slot Number ..">
+                                                                <input asp-for="slot.SlotNumber" type="text" class="form-control" id="" placeholder="Enter Parking Slot Number .." name="SlotNumber">
                                                             </div>
                                                         </div>
                                                         @*<div class="col-12">
@@ -108,10 +108,15 @@
                                         <th width="10%"></th>
                                     </tr>
                                 </thead>
+                                @{
+                                    var i = 1;
+                                }
                                 @foreach(var item in Model.slots)
                                 {
                                         <tbody>
                                         <tr>
+                                            @*<td hidden>@item.Id</td>*@
+                                            <td >@i</td>
                                             <td><b style="color: maroon">7545</b></td>
                                             @if(item.Status == "Unavailable")
                                             {
@@ -121,20 +126,49 @@
                                             <td><button type="button" class="btn btn-info btn-xs">@item.Status</button></td>
                                             }
                                             
-                                            <td><button class="btn btn-primary btn-xs" asp-route-itemid="@item.Id" asp-page-handler="Edit" value="@item.Id" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs delete" asp-page-handler="Delete" value="@item.Id"><i class="fa fa-trash"></i></button></td>
+                                            <td>@*<button class="btn btn-primary btn-xs" asp-route-id="@item.Id" asp-page-handler="Edit" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> *@
+                                                <a  class="btn-edit-user edit" data-id="@item.Id" data-toggle="modal" data-target="#edit"><i class="fa fa-edit" ddata-toggle="tooltip"></i></a>
+                                                <form method="post" asp-page-handler="Delete" asp-page="ParkingSlot">
+                                                    @*<a data-id="@item.Id" class="delete" id="deleteModal"><i class="fa fa-trash" data-toggle="tooltip"></i></a>*@
+                                                    <button class="delete" id="deleteModal" ><i class="fa fa-trash" data-toggle="tooltip"></i></button>
+                                                </form>
+                                               
+                                                @*<button class="btn btn-danger btn-xs delete" asp-route-id="@item.Id" asp-page-handler="Delete"><i class="fa fa-trash"></i></button>*@
+                                                <input type="hidden" name="id" id="id" value="@item.Id">
+                                            </td>
 
                                         </tr>
                                         
-                                        </tbody>
+                                    </tbody>
+                                    i++;
                                 }
                                 
                                 
                             </table>
+
+                            <div class="modal" tabindex="-1" id="deleteModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Delete</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="modal fade" id="edit">
                                 <div class="modal-dialog modal-sm">
                                     @*EDIT MODAL*@
                                     <form asp-page-handler="Edit" asp-page="ParkingSlot" method="post">
-                                        <input asp-for="Slot.Id" hidden value="Slot.Id" />
+                                        @*<input asp-for="Slot.Id" readonly />*@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Update Slot</h4>
@@ -148,7 +182,13 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Parking Slot</label>
-                                                                <input type="text" class="form-control" id="" placeholder="Enter Parking Slot Number ..">
+                                                                <input type="text" asp-for="@Model.Slot.Id" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Parking Slot</label>
+                                                                <input type="text" asp-for="@Model.Slot.SlotNumber" class="form-control" id="" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
@@ -186,11 +226,11 @@
 </div>
 <!-- /.content-wrapper -->
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     (document).ready(function () {
         $('table .delete').on('click', function () {
             var id = $(this).parent().find('#id').val();
             alert(id);
         });
     });
-</script>
+</script>*@

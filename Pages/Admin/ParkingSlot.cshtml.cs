@@ -89,7 +89,11 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
         public IActionResult OnPostDelete(int id)
         {
             
-            var found = _unitOfWork.Parking.GetById(slot.Id);
+            var search = _unitOfWork.Parking.GetById(slot.Id);
+            _unitOfWork.Parking.Delete(search.Id);
+            _unitOfWork.Commit();
+            _unitOfWork.Dispose();
+
             return RedirectToPage("ParkingSlot");
         }
     }
