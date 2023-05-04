@@ -30,7 +30,9 @@
                         <div class="card-header">
                             <h3 class="card-title">Parking Slot Data table</h3>
                             <button class="btn btn-success btn-xs" style="margin-left: 77%" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Add</button>
+                           
                             @*ADD MODAL*@
+
                             <div class="modal fade" id="add">
                                 <div class="modal-dialog modal-sm">
                                     <form asp-page-handler="Add" asp-page="ParkingSlot" method="post">
@@ -63,21 +65,7 @@
                                                                 <input asp-for="slot.SlotNumber" type="text" class="form-control" id="" placeholder="Enter Parking Slot Number .." name="SlotNumber">
                                                             </div>
                                                         </div>
-                                                        @*<div class="col-12">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Status</label>
-                                                                <input asp-for="slot.Status" type="text" class="form-control" id="" placeholder="Enter Slot Status ..">
-                                                            </div>
-                                                        </div>*@
-                                                        @*<div class="col-6">
-                                                            <div class="form-group">
-                                                                <label>Select Status</label>
-                                                                <select class="form-control">
-                                                                    <option value="Available" name="Status">Available</option>
-                                                                    <option value="Unavailable" name="Status">Unavailable</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>*@
+                                                       
                                                         <div class="col-12">
                                                             <input name="Status" type="radio" value="Available" />Available
                                                             <input name="Status" type="radio" value="Unavailable" />Unavailable
@@ -99,7 +87,9 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+
                             @*DATA TABLE*@
+
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -128,12 +118,7 @@
                                             
                                             <td>@*<button class="btn btn-primary btn-xs" asp-route-id="@item.Id" asp-page-handler="Edit" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> *@
                                                 <a  class="btn-edit-user edit" data-id="@item.Id" data-toggle="modal" data-target="#edit"><i class="fa fa-edit" ddata-toggle="tooltip"></i></a>
-                                                <form method="post" asp-page-handler="Delete" asp-page="ParkingSlot">
-                                                    @*<a data-id="@item.Id" class="delete" id="deleteModal"><i class="fa fa-trash" data-toggle="tooltip"></i></a>*@
-                                                    <button class="delete" id="deleteModal" ><i class="fa fa-trash" data-toggle="tooltip"></i></button>
-                                                </form>
-                                               
-                                                @*<button class="btn btn-danger btn-xs delete" asp-route-id="@item.Id" asp-page-handler="Delete"><i class="fa fa-trash"></i></button>*@
+                                                <a class="delete" data-target="#deleteModal" data-toggle="modal"><i class="fa fa-trash" data-toggle="tooltip"></i></a>
                                                 <input type="hidden" name="id" id="id" value="@item.Id">
                                             </td>
 
@@ -146,24 +131,33 @@
                                 
                             </table>
 
-                            <div class="modal" tabindex="-1" id="deleteModal">
+                        
+                            @*DELETE MODAL*@
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
+                                        <form method="post" asp-page-handler="Delete" asp-page="ParkingSlot">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Delete</h5>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Are you sure you want to delete?</p>
+                                            <p>Are you sure you want to Delete this Data?</p>
+                                            <p class="text-warning"><small>This action cannot be undone</small></p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="deleteModal">Cancel</button>
+                                            <input type="submit" class="btn btn-danger" value="Delete" id="Id"/>
+                                            <input type="hidden" name="id" id="Id"/>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                             
+
+                            <!--delete modal end-->
                             <div class="modal fade" id="edit">
                                 <div class="modal-dialog modal-sm">
                                     @*EDIT MODAL*@

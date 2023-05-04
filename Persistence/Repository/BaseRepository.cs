@@ -26,9 +26,10 @@ namespace DataAccess.Persistence.Repository
             
         }
 
-        public void Delete(int id)
+        public void Delete(T item)
         {
-            _db.Entry(id).State = EntityState.Deleted;
+            _db.Entry(item).State = EntityState.Deleted;
+           
         }
 
         public void DeleteRange(int start, int end, int count)

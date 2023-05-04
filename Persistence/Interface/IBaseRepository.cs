@@ -15,7 +15,7 @@ namespace DataAccess.Persistence.Interface
         Task<IEnumerable<T>> GetAllAsync();
         IEnumerable<T> GetAll();
         void AddAsync(T item);
-        void Delete(int id);
+        void Delete(T item);
         void DeleteRange(int start, int end, int count);
         void DeleteRange(IEnumerable<T> items);
         void Update(T item);
