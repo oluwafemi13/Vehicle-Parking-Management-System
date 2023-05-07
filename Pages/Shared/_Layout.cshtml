@@ -54,17 +54,7 @@
     <!-- summernote -->
     <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
     
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-
-            $('table .delete').on('click', function(){
-                var id = $(this).parent().find('#id').val();
-                //alert(id);
-                $('#deleteModal #Id').val(id);
-            });
-        });
-    </script>
+    
 </head>
 <body class="hold-transition sidebar-mini">
 @if(SigninManager.IsSignedIn(User))

@@ -26,13 +26,22 @@
                 <div class="col-12">
 
 
+                    @*ADD MODAL*@
+                    @*ADD MODAL*@
+                    @*ADD MODAL*@
+                    @*ADD MODAL*@
+                    @*ADD MODAL*@
+                    @*ADD MODAL*@
+                    @*ADD MODAL*@
+                    @*ADD MODAL*@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Booking Data table</h3>
                             <button class="btn btn-success btn-xs" style="margin-left: 80%" data-toggle="modal" data-target="#add"><i class="fa fa-plus"></i> Add</button>
                             <div class="modal fade" id="add">
                                 <div class="modal-dialog modal-md">
-                                    <form action="">
+                                    <form method="post" asp-page-handler="Create" asp-page="Booking" >
+                                        
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Add Booking</h4>
@@ -51,10 +60,13 @@
                                                         </div>
                                                         <div class="col-4">
                                                             <div class="form-group">
+                                                                
                                                                 <label for="exampleInputEmail1">Slot</label>
                                                                 <select class="form-control">
-                                                                    <option>22</option>
-                                                                    <option>23</option>
+                                                                @foreach (var item in Model.slot)
+                                                                {  
+                                                                        <option>@item.SlotNumber</option>      
+                                                                }
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -115,6 +127,14 @@
                         <!-- /.card-header -->
                         <div class="card-body">
 
+
+                            @*TABLE*@
+                            @*TABLE*@
+                            @*TABLE*@
+                            @*TABLE*@
+                            @*TABLE*@
+                            @*TABLE*@
+
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -125,7 +145,7 @@
                                         <th>Slot Number</th>
                                         <th>Status</th>
                                         <th>Remarks</th>
-                                        <th width="7%"></th>
+                                        <th width="10%"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,34 +157,21 @@
                                         <td><button type="button" class="btn btn-info btn-xs">3</button></td>
                                         <td>Data</td>
                                         <td>Data</td>
-                                        <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
+                                        <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
 
                                     </tr>
-                                    <tr>
-                                        <td><b style="color: maroon">7545</b></td>
-                                        <td>Data</td>
-                                        <td>RUV</td>
-                                        <td><i>1:00 hrs</i></td>
-                                        <td><button type="button" class="btn btn-info btn-xs">3</button></td>
-                                        <td>Data</td>
-                                        <td>Data</td>
-                                        <td><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"></i></button> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></td>
-                                    </tr>
-
+                                   
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Reference No.</th>
-                                        <th>Customer</th>
-                                        <th>Vehicle</th>
-                                        <th>Duration of Booking</th>
-                                        <th>Slot Number</th>
-                                        <th>Status</th>
-                                        <th>Remarks</th>
-                                        <th width="7%"></th>
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
+
+                            @*EDIT MODAL*@
+                            @*EDIT MODAL*@
+                            @*EDIT MODAL*@
+                            @*EDIT MODAL*@
+                            @*EDIT MODAL*@
+                            @*EDIT MODAL*@
                             <div class="modal fade" id="edit">
                                 <div class="modal-dialog modal-md">
                                     <form action="">
@@ -187,10 +194,10 @@
                                                         <div class="col-4">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Slot</label>
-                                                                <select class="form-control">
-                                                                    <option>22</option>
-                                                                    <option>23</option>
-                                                                </select>
+                                                                @foreach (var item in Model.slot)
+                                                                {
+                                                                    <option>@item.SlotNumber</option>
+                                                                }
                                                             </div>
                                                         </div>
                                                         <div class="col-6">

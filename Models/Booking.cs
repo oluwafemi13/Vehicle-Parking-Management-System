@@ -15,6 +15,9 @@ namespace Models
         public string Remarks { get; set; }
         public DateTime DateCreated { get; set; }
         public Payment Payment { get; set; }
+        public string Reference { get; set; }
+        public string CustomerName { get; set; }
+        public string Vehicle { get; set; }
 
     }
 }

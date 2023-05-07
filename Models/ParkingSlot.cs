@@ -15,7 +15,9 @@ namespace Models
         public string SlotType { get; set; }
         public int SlotNumber { get; set; }
         public string Status { get; set; }
-
+        
        
+
+
     }
 }

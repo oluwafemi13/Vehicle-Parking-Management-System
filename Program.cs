@@ -57,22 +57,23 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSingleton<ApplicationUser>();
 
-builder.Services.AddDistributedMemoryCache();
-builder.Services.AddSession(
+//builder.Services.AddDistributedMemoryCache();
+/*builder.Services.AddSession(
     options =>
     {
         options.Cookie.HttpOnly = true;
         options.Cookie.IsEssential = true;
         options.IdleTimeout = TimeSpan.FromSeconds(1000);
     }
-    );
+    );*/
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-   
+   // app.UseDeveloperExceptionPage();
+    app.UseExceptionHandler("/Error");
+
 }
 else
 {
@@ -90,7 +91,7 @@ StripeConfiguration.ApiKey = key;
 app.UseAuthentication();;
 
 app.UseAuthorization();
-app.UseSession();
+//app.UseSession();
 app.MapRazorPages();
 app.MapControllers();
 app.Run();

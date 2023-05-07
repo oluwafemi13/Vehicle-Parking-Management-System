@@ -57,14 +57,15 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
             slots = _unitOfWork.Parking.GetAll();
         }
 
-        
-        public async Task OnGetEdit(int id)
+        public async Task<IActionResult> OnGetSearch(int id)
         {
+            //var check =  await _unitOfWork.Parking.GetById(id);
 
-            Slot = await _unitOfWork.Parking.Get(x => x.Id == id);
+            Slot = await _unitOfWork.Parking.GetById(id);
+            return new JsonResult(Slot);
         }
 
-        public async Task<IActionResult> OnPostEdit(int id)
+        public async Task<IActionResult> OnPostUpdate(int id)
         {
 
            
@@ -88,6 +89,7 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
                 return RedirectToPage("ParkingSlot");
         }
 
+
        
 
         public async Task<IActionResult> OnPostDelete()
@@ -97,9 +99,6 @@ namespace Vehicle_Parking_Management_System.Pages.Admin
              _unitOfWork.Parking.Delete(search);
             _unitOfWork.Commit();
             _unitOfWork.Dispose();
-
-           
-
             return RedirectToPage("ParkingSlot");
             
         }
